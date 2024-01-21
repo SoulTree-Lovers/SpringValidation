@@ -16,9 +16,8 @@ public class PhoneNumberValidator implements ConstraintValidator<PhoneNumber, St
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) { // 검증하는 부분
-//        boolean result = Pattern.matches(value, regexp); --> 정규식과 완전히 일치하는 지 판별
-        // 수정된 부분: Pattern.compile(regexp).matcher(value).matches() 사용
-        boolean result = Pattern.compile(regexp).matcher(value).matches();
+        boolean result = Pattern.matches(regexp, value); // --> 정규식과 완전히 일치하는 지 판별
+//        boolean result = Pattern.compile(regexp).matcher(value).matches(); // 이 방법도 가능
 
         return result;
     }
